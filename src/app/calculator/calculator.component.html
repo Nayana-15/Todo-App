@@ -1,0 +1,23 @@
+<div *ngIf="!showtodo">
+<div style="text-align: center; margin-top: 50px;">
+ <h2>Calculator Page</h2>
+
+<!-- Simple calculator layout -->
+<input [(ngModel)]="num1" type="number" placeholder="Enter first number">
+<input [(ngModel)]="num2" type="number" placeholder="Enter second number">
+<br><br>
+<button (click)="add()">Add</button>
+<button (click)="subtract()">Subtract</button>
+<button (click)="multiply()">Multiply</button>
+<button (click)="divide()">Divide</button>
+
+<h3>Result: {{ result }}</h3>
+
+
+  <button (click)="goTotodo()">Back to To-Do</button>
+
+
+  <h3 style="margin-top: 20px;">Result: {{ result }}</h3>
+</div>
+</div>
+<app-todo *ngIf="showtodo"></app-todo>

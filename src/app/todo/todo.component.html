@@ -1,0 +1,33 @@
+<div *ngIf="!showCalculator" class="todo-container">
+  <button (click)="goToCalculator()">Go to Calculator</button>
+
+         <!-- <button routerLink="/calculator">Go to Calculator</button> -->
+
+
+  <h2>To-Do List</h2>
+
+  <div class="input-group">
+    <input [(ngModel)]="newTask" placeholder="Enter a task" />
+    <button (click)="addTodo()">Add</button>
+  </div>
+
+  <ul>
+    <li *ngFor="let todo of todos">
+      <ng-container *ngIf="editingTaskId === todo.id; else viewMode">
+        <input [(ngModel)]="editedTask" />
+        <button (click)="updateTodo()">Save</button>
+      </ng-container>
+
+      <ng-template #viewMode>
+        <span [class.completed]="todo.isCompleted" (click)="toggleComplete(todo)">
+          {{ todo.task }}
+        </span>
+        <button (click)="startEdit(todo)">Edit</button>
+        <button (click)="deleteTodo(todo.id)">Delete</button>
+        
+
+      </ng-template>
+    </li>
+  </ul>
+</div>
+<app-calculator *ngIf="showCalculator"></app-calculator>
